@@ -1,0 +1,1094 @@
+/* =============================================================================
+   Tixoras PRICING CARDS - DESIGN SOPHISTIQUÉ TMS SAAS
+   ============================================================================= */
+
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: auto;
+}
+
+/* Animation du background gradient */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Overlay pattern TMS */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.logo-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-shadow: 
+        0 10px 40px rgba(0,0,0,0.15),
+        0 0 0 1px rgba(255,255,255,0.2);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.logo-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.logo-wrapper:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 20px 60px rgba(102, 126, 234, 0.3),
+        0 0 0 1px rgba(255,255,255,0.4);
+}
+
+.logo-wrapper:hover::before {
+    opacity: 1;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+    transition: filter 0.3s ease;
+}
+
+.logo-wrapper:hover .logo {
+    filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.4));
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.brand-text h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    margin: 0;
+    line-height: 1;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.main-description {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+}
+
+/* Grid des cartes */
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: stretch;
+}
+
+/* =============================================================================
+   SECTION FONCTIONNALITÉS SHOWCASE - DESIGN ATTRACTIF
+   ============================================================================= */
+
+.features-showcase {
+    margin: 40px 0;
+}
+
+.showcase-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.showcase-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    text-shadow: none;
+}
+
+.showcase-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+}
+
+/* SECTIONS DES RÔLES */
+.role-section {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    padding: 35px;
+    margin-bottom: 30px;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.role-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.admin-section::before {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.user-section::before {
+    background: linear-gradient(90deg, #4ecdc4, #44a08d);
+}
+
+.pwa-section::before {
+    background: linear-gradient(90deg, #f093fb, #f5576c);
+}
+
+.role-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* HEADER DES RÔLES */
+.role-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+.role-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.admin-section .role-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.user-section .role-icon {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+}
+
+.pwa-section .role-icon {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+}
+
+.role-section:hover .role-icon {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.role-info h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 5px 0;
+}
+
+.role-info p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin: 0;
+    font-weight: 300;
+}
+
+/* FONCTIONNALITÉS HORIZONTALES */
+.features-horizontal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.feature-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+}
+
+.feature-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-card li {
+    padding: 6px 0 6px 20px;
+    font-size: 0.9rem;
+    color: #5d6d7e;
+    position: relative;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+}
+
+.feature-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.feature-card li:hover {
+    color: #2c3e50;
+    padding-left: 24px;
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.role-section {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.role-section:nth-child(2) { animation-delay: 0.1s; opacity: 0; }
+.role-section:nth-child(3) { animation-delay: 0.2s; opacity: 0; }
+.role-section:nth-child(4) { animation-delay: 0.3s; opacity: 0; }
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .features-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 968px) {
+    .showcase-title {
+        font-size: 2rem;
+    }
+    
+    .showcase-subtitle {
+        font-size: 1rem;
+    }
+    
+    .role-section {
+        padding: 25px;
+    }
+    
+    .role-header {
+        gap: 15px;
+    }
+    
+    .role-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .role-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .role-info p {
+        font-size: 1rem;
+    }
+    
+    .features-horizontal {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .showcase-header {
+        margin-bottom: 30px;
+    }
+    
+    .showcase-title {
+        font-size: 1.6rem;
+    }
+    
+    .role-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .role-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .role-icon {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .role-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .feature-card {
+        padding: 18px;
+    }
+    
+    .feature-icon {
+        font-size: 2rem;
+    }
+    
+    .feature-card h4 {
+        font-size: 1rem;
+    }
+}
+
+/* Cartes de prix */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.1),
+        0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(0,0,0,0.15),
+        0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* Badge populaire */
+.popular-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: none;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Headers des cartes */
+.card-header {
+    padding: 20px 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.plan-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.starter-badge {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+}
+
+.business-badge {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.enterprise-badge {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+}
+
+.plan-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.plan-subtitle {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.price-amount {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #2c3e50;
+    line-height: 1;
+}
+
+.currency {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #7f8c8d;
+}
+
+.period {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.price-note {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+/* Corps des cartes */
+.card-body {
+    padding: 0 20px 15px;
+    flex-grow: 1;
+}
+
+.features-section,
+.firebase-section,
+.additional-pricing {
+    margin-bottom: 15px;
+}
+
+.features-section h4,
+.firebase-section h4,
+.additional-pricing h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.features-list,
+.firebase-list {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.features-list li,
+.firebase-list li {
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.features-list li:last-child,
+.firebase-list li:last-child {
+    border-bottom: none;
+}
+
+.features-list li i,
+.firebase-list li i {
+    width: 20px;
+    text-align: center;
+    color: #3498db;
+    font-size: 1rem;
+}
+
+.extra-price {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: #5d6d7e;
+}
+
+.extra-price strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Footer des cartes */
+.card-footer {
+    padding: 0 20px 15px;
+}
+
+.cta-button {
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.starter-btn {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+}
+
+.business-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.enterprise-btn {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Styles spéciaux pour la carte populaire */
+.popular {
+    border: 2px solid #ff6b6b;
+    box-shadow: 
+        0 12px 40px rgba(255,107,107,0.2),
+        0 4px 16px rgba(0,0,0,0.1);
+}
+
+.popular:hover {
+    box-shadow: 
+        0 20px 60px rgba(255,107,107,0.25),
+        0 8px 32px rgba(0,0,0,0.15);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+    margin-top: 40px;
+}
+
+.pricing-section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin: 50px 0 30px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.contact-info {
+    margin-top: 15px;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+    border-bottom-color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .pricing-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .card {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 968px) {
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .logo-wrapper {
+        width: 65px;
+        height: 65px;
+        border-radius: 16px;
+        padding: 12px;
+    }
+    
+    .brand-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .main-title {
+        font-size: 2.2rem;
+    }
+    
+    .main-description {
+        font-size: 1rem;
+    }
+    
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card {
+        margin: 0 10px;
+    }
+    
+    .card-header {
+        padding: 30px 24px 0;
+    }
+    
+    .card-body {
+        padding: 0 24px 24px;
+    }
+    
+    .card-footer {
+        padding: 0 24px 24px;
+    }
+    
+    .price-amount {
+        font-size: 3rem;
+    }
+    
+    .logo-container h1 {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        margin: 0 5px;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .price-amount {
+        font-size: 2.5rem;
+    }
+    
+    .logo-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Effet glassmorphism avancé */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: 24px;
+    pointer-events: none;
+}
+
+/* Micro-interactions */
+.features-list li:hover {
+    background-color: rgba(52,152,219,0.05);
+    border-radius: 8px;
+    margin: 0 -8px;
+    padding: 12px 8px;
+    transition: all 0.2s ease;
+}
+
+.plan-badge:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* Indicateurs de valeur */
+.starter::after {
+    content: 'Parfait pour débuter';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(78, 205, 196, 0.1);
+    color: #44a08d;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+.business::after {
+    content: 'Meilleur rapport qualité/prix';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.enterprise::after {
+    content: 'Solution complète';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(240, 147, 251, 0.1);
+    color: #f093fb;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+/* =============================================================================
+   SECTION FONCTIONNALITÉS DÉTAILLÉES
+   ============================================================================= */
+
+.features-detailed {
+    margin-top: 50px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.features-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-category {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.feature-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.category-header i {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+.category-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.category-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #34495e;
+    margin: 20px 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.category-content h4:first-child {
+    margin-top: 0;
+}
+
+.category-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-content li {
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: #5d6d7e;
+    position: relative;
+    padding-left: 20px;
+}
+
+.category-content li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Responsive pour les fonctionnalités */
+@media (max-width: 768px) {
+    .features-detailed {
+        margin-top: 30px;
+        padding: 20px 15px;
+    }
+    
+    .features-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feature-category {
+        padding: 20px;
+    }
+    
+    .category-header h3 {
+        font-size: 1.2rem;
+    }
+}
