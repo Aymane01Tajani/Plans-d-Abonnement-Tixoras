@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCardInteractions();
     setupButtonAnimations();
     setupScrollAnimations();
+    initializeSectorsTabs(); // Nouvelle fonction pour les tabs
 });
 
 // Initialisation des cartes de prix
@@ -441,3 +442,56 @@ spinStyle.textContent = `
     }
 `;
 document.head.appendChild(spinStyle);
+
+// =============================================================================
+// SECTEURS TABS - NAVIGATION INTERACTIVE
+// =============================================================================
+function initializeSectorsTabs() {
+    const tabs = document.querySelectorAll('.sector-tab');
+    const panels = document.querySelectorAll('.sector-panel');
+    
+    if (tabs.length === 0) return;
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetSector = this.getAttribute('data-sector');
+            
+            // Retirer la classe active de tous les tabs et panels
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+            
+            // Ajouter la classe active au tab et panel sélectionné
+            this.classList.add('active');
+            const targetPanel = document.querySelector(`.sector-panel[data-sector="${targetSector}"]`);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+            
+            // Animation de feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+    
+    // Animation des bento items au scroll
+    const bentoItems = document.querySelectorAll('.bento-item');
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const bentoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    bentoItems.forEach(item => {
+        bentoObserver.observe(item);
+    });
+}
