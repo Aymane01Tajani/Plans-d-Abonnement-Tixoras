@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupButtonAnimations();
     setupScrollAnimations();
     initializeSectorsTabs(); // Nouvelle fonction pour les tabs
+    initializeRolesTabs(); // Tabs pour les rôles
 });
 
 // Initialisation des cartes de prix
@@ -493,5 +494,38 @@ function initializeSectorsTabs() {
     
     bentoItems.forEach(item => {
         bentoObserver.observe(item);
+    });
+}
+
+// =============================================================================
+// ROLES TABS — Switching entre Admin, Manager, User, PWA
+// =============================================================================
+function initializeRolesTabs() {
+    const tabs = document.querySelectorAll('.role-tab');
+    const panels = document.querySelectorAll('.role-panel');
+
+    if (tabs.length === 0) return;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetRole = this.getAttribute('data-role');
+
+            // Retirer la classe active de tous les tabs et panels
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+
+            // Ajouter la classe active au tab et panel sélectionné
+            this.classList.add('active');
+            const targetPanel = document.querySelector(`.role-panel[data-role="${targetRole}"]`);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+
+            // Animation de feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
     });
 }

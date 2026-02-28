@@ -30,222 +30,225 @@
                 <p class="showcase-subtitle">Toutes les fonctionnalités incluses dans chaque plan — Seul le nombre d'utilisateurs varie</p>
             </div>
             
-            <!-- ADMIN ROLE -->
-            <div class="role-section admin-section">
-                <div class="role-header">
-                    <div class="role-icon">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                    <div class="role-info">
-                        <h3>Rôle Administrateur</h3>
-                        <p>Contrôle total et pilotage de votre équipe</p>
-                    </div>
+            <div class="roles-tabs-container">
+                <div class="roles-nav">
+                    <button class="role-tab active" data-role="admin">
+                        <span class="role-tab-icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="role-tab-label">Administrateur</span>
+                    </button>
+                    <button class="role-tab" data-role="manager">
+                        <span class="role-tab-icon"><i class="fas fa-user-tie"></i></span>
+                        <span class="role-tab-label">Manager</span>
+                    </button>
+                    <button class="role-tab" data-role="user">
+                        <span class="role-tab-icon"><i class="fas fa-user"></i></span>
+                        <span class="role-tab-label">Utilisateur</span>
+                    </button>
+                    <button class="role-tab" data-role="pwa">
+                        <span class="role-tab-icon"><i class="fas fa-mobile-alt"></i></span>
+                        <span class="role-tab-label">PWA</span>
+                    </button>
                 </div>
-                <div class="features-horizontal">
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h4>Tableau de bord avancé</h4>
-                        <ul>
-                            <li>Vue complète des tickets</li>
-                            <li>Statistiques en temps réel</li>
-                            <li>Indicateurs TTR avancés</li>
-                            <li>Taux de résolution</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎫</div>
-                        <h4>Gestion des tickets</h4>
-                        <ul>
-                            <li>Création & modification</li>
-                            <li>Recherche avancée</li>
-                            <li>Filtres intelligents</li>
-                            <li>Vue détaillée</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">👥</div>
-                        <h4>Gestion utilisateurs</h4>
-                        <ul>
-                            <li>Création de comptes</li>
-                            <li>Attribution des rôles</li>
-                            <li>Gestion des accès</li>
-                            <li>Reset mot de passe</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚙️</div>
-                        <h4>Paramètres & Export</h4>
-                        <ul>
-                            <li>Catégories personnalisées</li>
-                            <li>Export CSV</li>
-                            <li>Configuration avancée</li>
-                            <li>Système de chat</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <!-- MANAGER ROLE -->
-            <div class="role-section manager-section">
-                <div class="role-header">
-                    <div class="role-icon">
-                        <i class="fas fa-user-tie"></i>
+                <div class="roles-content">
+                    <!-- ADMIN PANEL -->
+                    <div class="role-panel active" data-role="admin">
+                        <div class="role-panel-header">
+                            <h3>Rôle Administrateur</h3>
+                            <p>Contrôle total et pilotage de votre équipe</p>
+                        </div>
+                        <div class="features-horizontal">
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h4>Tableau de bord avancé</h4>
+                                <ul>
+                                    <li>Vue complète des tickets</li>
+                                    <li>Statistiques en temps réel</li>
+                                    <li>Indicateurs TTR avancés</li>
+                                    <li>Taux de résolution</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎫</div>
+                                <h4>Gestion des tickets</h4>
+                                <ul>
+                                    <li>Création & modification</li>
+                                    <li>Recherche avancée</li>
+                                    <li>Filtres intelligents</li>
+                                    <li>Vue détaillée</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h4>Gestion utilisateurs</h4>
+                                <ul>
+                                    <li>Création de comptes</li>
+                                    <li>Attribution des rôles</li>
+                                    <li>Gestion des accès</li>
+                                    <li>Reset mot de passe</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">⚙️</div>
+                                <h4>Paramètres & Export</h4>
+                                <ul>
+                                    <li>Catégories personnalisées</li>
+                                    <li>Export CSV</li>
+                                    <li>Configuration avancée</li>
+                                    <li>Système de chat</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="role-info">
-                        <h3>Rôle Manager</h3>
-                        <p>Pilotage et supervision de votre département</p>
-                    </div>
-                </div>
-                <div class="features-horizontal">
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h4>Tableau de bord avancé</h4>
-                        <ul>
-                            <li>Vue complète des tickets de son département</li>
-                            <li>Statistiques en temps réel</li>
-                            <li>Indicateurs TTR avancés</li>
-                            <li>Taux de résolution</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">👥</div>
-                        <h4>Gestion d'équipe</h4>
-                        <ul>
-                            <li>Suivi des membres</li>
-                            <li>Attribution des tickets</li>
-                            <li>Performance d'équipe</li>
-                            <li>Rapports département</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎫</div>
-                        <h4>Supervision tickets</h4>
-                        <ul>
-                            <li>Filtres par département</li>
-                            <li>Priorisation avancée</li>
-                            <li>Validation & escalade</li>
-                            <li>Vue détaillée</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h4>Rapports & Suivi</h4>
-                        <ul>
-                            <li>KPI département</li>
-                            <li>Export données</li>
-                            <li>Historique complet</li>
-                            <li>Alertes & notifications</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <!-- USER ROLE -->
-            <div class="role-section user-section">
-                <div class="role-header">
-                    <div class="role-icon">
-                        <i class="fas fa-user"></i>
+                    <!-- MANAGER PANEL -->
+                    <div class="role-panel" data-role="manager">
+                        <div class="role-panel-header">
+                            <h3>Rôle Manager</h3>
+                            <p>Pilotage et supervision de votre département</p>
+                        </div>
+                        <div class="features-horizontal">
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h4>Tableau de bord avancé</h4>
+                                <ul>
+                                    <li>Vue complète des tickets de son département</li>
+                                    <li>Statistiques en temps réel</li>
+                                    <li>Indicateurs TTR avancés</li>
+                                    <li>Taux de résolution</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h4>Gestion d'équipe</h4>
+                                <ul>
+                                    <li>Suivi des membres</li>
+                                    <li>Attribution des tickets</li>
+                                    <li>Performance d'équipe</li>
+                                    <li>Rapports département</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎫</div>
+                                <h4>Supervision tickets</h4>
+                                <ul>
+                                    <li>Filtres par département</li>
+                                    <li>Priorisation avancée</li>
+                                    <li>Validation & escalade</li>
+                                    <li>Vue détaillée</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📈</div>
+                                <h4>Rapports & Suivi</h4>
+                                <ul>
+                                    <li>KPI département</li>
+                                    <li>Export données</li>
+                                    <li>Historique complet</li>
+                                    <li>Alertes & notifications</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="role-info">
-                        <h3>Rôle Utilisateur</h3>
-                        <p>Interface simple et efficace pour le suivi</p>
-                    </div>
-                </div>
-                <div class="features-horizontal">
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h4>Dashboard personnel</h4>
-                        <ul>
-                            <li>Vue de mes tickets</li>
-                            <li>Statuts en temps réel</li>
-                            <li>Graphiques interactifs</li>
-                            <li>Tickets récents</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎟️</div>
-                        <h4>Suivi des tickets</h4>
-                        <ul>
-                            <li>Vue en cartes</li>
-                            <li>Recherche rapide</li>
-                            <li>Filtres par priorité</li>
-                            <li>Historique complet</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💬</div>
-                        <h4>Communication</h4>
-                        <ul>
-                            <li>Chat intégré</li>
-                            <li>Commentaires</li>
-                            <li>Notifications</li>
-                            <li>Conversations</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔐</div>
-                        <h4>Compte & Sécurité</h4>
-                        <ul>
-                            <li>Gestion du profil</li>
-                            <li>Reset mot de passe</li>
-                            <li>Paramètres perso</li>
-                            <li>Confidentialité</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <!-- PWA & COMMON -->
-            <div class="role-section pwa-section">
-                <div class="role-header">
-                    <div class="role-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                    <!-- USER PANEL -->
+                    <div class="role-panel" data-role="user">
+                        <div class="role-panel-header">
+                            <h3>Rôle Utilisateur</h3>
+                            <p>Interface simple et efficace pour le suivi</p>
+                        </div>
+                        <div class="features-horizontal">
+                            <div class="feature-card">
+                                <div class="feature-icon">📈</div>
+                                <h4>Dashboard personnel</h4>
+                                <ul>
+                                    <li>Vue de mes tickets</li>
+                                    <li>Statuts en temps réel</li>
+                                    <li>Graphiques interactifs</li>
+                                    <li>Tickets récents</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎟️</div>
+                                <h4>Suivi des tickets</h4>
+                                <ul>
+                                    <li>Vue en cartes</li>
+                                    <li>Recherche rapide</li>
+                                    <li>Filtres par priorité</li>
+                                    <li>Historique complet</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">💬</div>
+                                <h4>Communication</h4>
+                                <ul>
+                                    <li>Chat intégré</li>
+                                    <li>Commentaires</li>
+                                    <li>Notifications</li>
+                                    <li>Conversations</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔐</div>
+                                <h4>Compte & Sécurité</h4>
+                                <ul>
+                                    <li>Gestion du profil</li>
+                                    <li>Reset mot de passe</li>
+                                    <li>Paramètres perso</li>
+                                    <li>Confidentialité</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="role-info">
-                        <h3>Application Progressive Web (PWA)</h3>
-                        <p>Accessible partout, sur tous vos appareils</p>
-                    </div>
-                </div>
-                <div class="features-horizontal">
-                    <div class="feature-card">
-                        <div class="feature-icon">🌐</div>
-                        <h4>Multi-plateforme</h4>
-                        <ul>
-                            <li>Web & Mobile</li>
-                            <li>Responsive design</li>
-                            <li>Installation facile</li>
-                            <li>UI/UX amélioré</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎫</div>
-                        <h4>Tickets illimités</h4>
-                        <ul>
-                            <li>Sans restriction</li>
-                            <li>Historique complet</li>
-                            <li>Filtres avancés</li>
-                            <li>Recherche illimitée</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h4>Analytics & Métriques</h4>
-                        <ul>
-                            <li>Métriques auto</li>
-                            <li>Rapports détaillés</li>
-                            <li>Export de données</li>
-                            <li>Tableaux de bord</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔔</div>
-                        <h4>Notifications & Alertes</h4>
-                        <ul>
-                            <li>Notifications en temps réel</li>
-                            <li>Alertes pour les priorités hautes</li>
-                            <li>Chat en temps réel</li>
-                            <li>Suivi des mises à jour</li>
-                        </ul>
+
+                    <!-- PWA PANEL -->
+                    <div class="role-panel" data-role="pwa">
+                        <div class="role-panel-header">
+                            <h3>Application Progressive Web (PWA)</h3>
+                            <p>Accessible partout, sur tous vos appareils</p>
+                        </div>
+                        <div class="features-horizontal">
+                            <div class="feature-card">
+                                <div class="feature-icon">🌐</div>
+                                <h4>Multi-plateforme</h4>
+                                <ul>
+                                    <li>Web & Mobile</li>
+                                    <li>Responsive design</li>
+                                    <li>Installation facile</li>
+                                    <li>UI/UX amélioré</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎫</div>
+                                <h4>Tickets illimités</h4>
+                                <ul>
+                                    <li>Sans restriction</li>
+                                    <li>Historique complet</li>
+                                    <li>Filtres avancés</li>
+                                    <li>Recherche illimitée</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h4>Analytics & Métriques</h4>
+                                <ul>
+                                    <li>Métriques auto</li>
+                                    <li>Rapports détaillés</li>
+                                    <li>Export de données</li>
+                                    <li>Tableaux de bord</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔔</div>
+                                <h4>Notifications & Alertes</h4>
+                                <ul>
+                                    <li>Notifications en temps réel</li>
+                                    <li>Alertes pour les priorités hautes</li>
+                                    <li>Chat en temps réel</li>
+                                    <li>Suivi des mises à jour</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
