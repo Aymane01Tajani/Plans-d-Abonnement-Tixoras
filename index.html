@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plans d'Abonnement Tixoras</title>
+    <link rel="icon" type="image/png" href="assets/images/Logo-Tixoras.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -740,6 +741,16 @@
             <div class="qr-container">
                 <img src="assets/images/QR.png" alt="QR Code Tixoras" class="qr-code">
             </div>
+            <div class="download-buttons">
+                <a href="assets/files/android/app-arm64-v8a-release.apk" download class="dl-btn dl-btn--android">
+                    <i class="fab fa-android"></i>
+                    <span>Télécharger la version Android</span>
+                </a>
+                <button class="dl-btn dl-btn--ios" onclick="alert('La version iOS sera bientôt disponible')">
+                    <i class="fab fa-apple"></i>
+                    <span>Télécharger la version iOS</span>
+                </button>
+            </div>
         </div>
 
         <footer class="footer">
@@ -751,6 +762,128 @@
         </footer>
     </div>
 
+    <!-- FLOATING DEMO WIDGET -->
+    <div class="demo-widget" id="demoWidget">
+
+        <div class="demo-popup" id="demoPopup">
+            <!-- Header -->
+            <div class="demo-popup-header">
+                <div class="demo-avatar">
+                    <img src="assets/images/aymane.png" alt="Aymane" class="demo-avatar-img">
+                    <span class="demo-avatar-status"></span>
+                </div>
+                <div class="demo-header-info">
+                    <strong>Équipe Tixoras</strong>
+                    <span><span class="demo-online-dot"></span>En ligne · répond en &lt; 24h</span>
+                </div>
+                <button class="demo-popup-close" id="demoClose" aria-label="Fermer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="demo-popup-body">
+                <div class="demo-bubble">
+                    Bonjour ! Planifiez une <strong>démo gratuite de 30 min</strong> et découvrez comment Tixoras transforme votre support client.
+                </div>
+
+                <div class="demo-benefits">
+                    <div class="demo-benefit"><i class="fas fa-check-circle"></i>Démo 100 % personnalisée</div>
+                    <div class="demo-benefit"><i class="fas fa-check-circle"></i>Questions / réponses incluses</div>
+                    <div class="demo-benefit"><i class="fas fa-check-circle"></i>Sans engagement</div>
+                </div>
+
+                <form class="demo-form" id="demoForm">
+                    <input type="text"  class="demo-input" id="demoName"    placeholder="Votre nom"    required>
+                    <input type="email" class="demo-input" id="demoEmail"   placeholder="Votre email"  required>
+                    <select class="demo-input demo-select" id="demoSector" required>
+                        <option value="" disabled selected>Secteur d'activité</option>
+                        <option>Technologie / IT</option>
+                        <option>Commerce / Retail</option>
+                        <option>Santé / Médical</option>
+                        <option>Finance / Banque</option>
+                        <option>Éducation</option>
+                        <option>Industrie / Fabrication</option>
+                        <option>Services aux entreprises</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                    <input type="text" class="demo-input demo-sector-other" id="demoSectorOther" placeholder="Précisez votre secteur..." style="display:none">
+                    <input type="tel"  class="demo-input" id="demoPhone" placeholder="N° de téléphone">
+                    <textarea          class="demo-input" id="demoMessage" placeholder="Vos disponibilités ou questions..." rows="3"></textarea>
+                    <button type="submit" class="demo-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Envoyer ma demande
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- FAB trigger -->
+        <button class="demo-fab" id="demoFab" aria-label="Planifier une démo">
+            <span class="demo-notif-dot" id="demoNotif"></span>
+            <span class="demo-fab-icon demo-fab-icon--chat"><i class="fas fa-comments"></i></span>
+            <span class="demo-fab-icon demo-fab-icon--close" style="display:none"><i class="fas fa-times"></i></span>
+            <span class="demo-fab-label">Planifier une démo</span>
+        </button>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        (function () {
+            const widget   = document.getElementById('demoWidget');
+            const fab      = document.getElementById('demoFab');
+            const popup    = document.getElementById('demoPopup');
+            const closeBtn = document.getElementById('demoClose');
+            const notif    = document.getElementById('demoNotif');
+            const form     = document.getElementById('demoForm');
+            const iconChat  = fab.querySelector('.demo-fab-icon--chat');
+            const iconClose = fab.querySelector('.demo-fab-icon--close');
+
+            function open() {
+                popup.classList.add('demo-popup--open');
+                iconChat.style.display  = 'none';
+                iconClose.style.display = 'inline-flex';
+                notif.style.display     = 'none';
+            }
+            function close() {
+                popup.classList.remove('demo-popup--open');
+                iconChat.style.display  = 'inline-flex';
+                iconClose.style.display = 'none';
+            }
+
+            fab.addEventListener('click', () => popup.classList.contains('demo-popup--open') ? close() : open());
+            closeBtn.addEventListener('click', (e) => { e.stopPropagation(); close(); });
+            document.addEventListener('click', (e) => { if (!widget.contains(e.target)) close(); });
+
+            // Notification dot after 8 s if popup not yet opened
+            setTimeout(() => { if (!popup.classList.contains('demo-popup--open')) notif.style.display = 'flex'; }, 8000);
+
+            // Show free-text field when "Autre" is selected
+            const sectorSelect = document.getElementById('demoSector');
+            const sectorOther  = document.getElementById('demoSectorOther');
+            sectorSelect.addEventListener('change', () => {
+                const isAutre = sectorSelect.value === 'Autre';
+                sectorOther.style.display = isAutre ? 'block' : 'none';
+                sectorOther.required = isAutre;
+            });
+
+            // Build mailto on submit
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name    = document.getElementById('demoName').value;
+                const email   = document.getElementById('demoEmail').value;
+                const phone   = document.getElementById('demoPhone').value;
+                const rawSector = document.getElementById('demoSector').value;
+                const sector  = rawSector === 'Autre' ? document.getElementById('demoSectorOther').value : rawSector;
+                const message = document.getElementById('demoMessage').value;
+                const subject = encodeURIComponent('Demande de démo Tixoras — ' + name);
+                const bodyLines = ['Nom : ' + name, 'Email : ' + email];
+                if (phone)   bodyLines.push('Téléphone : ' + phone);
+                if (sector)  bodyLines.push('Secteur : ' + sector);
+                bodyLines.push('', 'Message :', message);
+                window.location.href = 'mailto:aymane.coding@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+            });
+        })();
+    </script>
 </body>
 </html>
