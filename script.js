@@ -3,63 +3,96 @@
 // =============================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    initHero();
     initializePricingCards();
     setupParallaxEffects();
     setupCardInteractions();
     setupButtonAnimations();
     setupScrollAnimations();
-    initializeSectorsTabs(); // Nouvelle fonction pour les tabs
-    initializeRolesTabs(); // Tabs pour les rôles
+    initializeSectorsTabs();
+    initializeRolesTabs();
 });
+
+// =============================================================================
+// HERO - Vidéo showcase
+// =============================================================================
+function initHero() {
+    const video = document.getElementById('heroVideo');
+    const playBtn = document.getElementById('heroPlayBtn');
+    const muteBtn = document.getElementById('heroMuteBtn');
+
+    if (!video) return;
+
+    // ── Play / Pause ──
+    if (playBtn) {
+        const iconPause = playBtn.querySelector('.icon-pause');
+        const iconPlay  = playBtn.querySelector('.icon-play');
+
+        playBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                iconPause.style.display = '';
+                iconPlay.style.display  = 'none';
+            } else {
+                video.pause();
+                iconPause.style.display = 'none';
+                iconPlay.style.display  = '';
+            }
+        });
+    }
+
+    // ── Mute / Son ──
+    if (muteBtn) {
+        const iconOn  = muteBtn.querySelector('.icon-sound-on');
+        const iconOff = muteBtn.querySelector('.icon-sound-off');
+
+        const syncMuteIcon = () => {
+            if (video.muted) {
+                iconOn.style.display  = 'none';
+                iconOff.style.display = '';
+                muteBtn.title = 'Activer le son';
+            } else {
+                iconOn.style.display  = '';
+                iconOff.style.display = 'none';
+                muteBtn.title = 'Couper le son';
+            }
+        };
+
+        syncMuteIcon(); // état initial (muted par défaut)
+
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            syncMuteIcon();
+        });
+    }
+
+    // ── Smooth scroll ──
+    const scrollIndicator = document.getElementById('heroScroll');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const plans = document.getElementById('plans');
+            if (plans) plans.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+}
 
 // Initialisation des cartes de prix
 function initializePricingCards() {
     const cards = document.querySelectorAll('.card');
     
-    cards.forEach((card, index) => {
-        // Animation d'entrée différée
-        setTimeout(() => {
-            card.classList.add('loaded');
-        }, index * 150);
-        
-        // Effet de tilt 3D au survol
+    cards.forEach((card) => {
         card.addEventListener('mousemove', handleCardTilt);
         card.addEventListener('mouseleave', resetCardTilt);
-        
-        // Effet de ripple au clic
         card.addEventListener('click', createRippleEffect);
     });
 }
 
-// Effet de parallaxe sur le background
-function setupParallaxEffects() {
-    let ticking = false;
-    
-    function updateParallax() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.card');
-        
-        parallaxElements.forEach((element, index) => {
-            const speed = 0.5 + (index * 0.1);
-            const yPos = -(scrolled * speed);
-            element.style.transform = `translateY(${yPos}px)`;
-        });
-        
-        ticking = false;
-    }
-    
-    function requestParallaxUpdate() {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', requestParallaxUpdate);
-}
+// Parallax désactivé (conflicte avec le tilt 3D et le scroll reveal)
+function setupParallaxEffects() {}
 
-// Effet de tilt 3D sur les cartes
+// Effet de tilt 3D sur les cartes (seulement si la carte est visible)
 function handleCardTilt(e) {
+    if (!e.currentTarget.classList.contains('is-visible')) return;
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -279,31 +312,48 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Animations basées sur le scroll
+// =============================================================================
+// SCROLL REVEAL - IntersectionObserver complet
+// =============================================================================
 function setupScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+                const el = entry.target;
+                el.classList.add('is-visible');
+                observer.unobserve(el);
+                // Supprimer le delay une fois l'animation terminée
+                el.addEventListener('transitionend', () => {
+                    el.style.transitionDelay = '';
+                }, { once: true });
             }
         });
-    }, observerOptions);
-    
-    // Observer toutes les cartes
-    document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
-    });
-    
-    // Observer le header
-    const header = document.querySelector('.header');
-    if (header) {
-        observer.observe(header);
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    function reveal(selector, type, stagger) {
+        document.querySelectorAll(selector).forEach((el, i) => {
+            // Ne pas re-traiter les éléments déjà configurés
+            if (el.classList.contains('reveal')) return;
+            el.classList.add('reveal', type);
+            if (stagger && i > 0) el.style.transitionDelay = (i * stagger) + 's';
+            observer.observe(el);
+        });
     }
+
+    // ── Sections ──
+    reveal('.header',                    'reveal-up',    0);
+    reveal('.showcase-header',           'reveal-up',    0);
+    reveal('.roles-tabs-container',      'reveal-up',    0);
+    reveal('.section-header-animated',   'reveal-up',    0);
+    reveal('.sectors-tabs-container',    'reveal-up',    0);
+    reveal('.pricing-section-title',     'reveal-up',    0);
+    reveal('.qr-section',               'reveal-up',    0);
+
+    // ── Éléments staggered ──
+    reveal('.feature-card',  'reveal-up',    0.09);
+    reveal('.bento-item',    'reveal-scale', 0.09);
+    reveal('.card',          'reveal-up',    0.12);
+    reveal('.problem-item',  'reveal-right', 0.1);
 }
 
 // Effet de particules flottantes pour le background

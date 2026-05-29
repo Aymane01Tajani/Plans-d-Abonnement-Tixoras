@@ -9,7 +9,88 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+
+    <!-- ═══════════════════════════════════════════
+         HERO SECTION - VIDÉO SHOWCASE PREMIUM
+    ═══════════════════════════════════════════ -->
+    <section class="hero">
+        <div class="hero-noise"></div>
+
+        <!-- Texte centré -->
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Application PWA · Web & Mobile</span>
+            </div>
+
+            <div class="hero-brand">
+                <div class="hero-logo-wrap">
+                    <img src="assets/images/Logo-Tixoras.png" alt="Tixoras" class="hero-logo">
+                </div>
+                <div class="hero-brand-name">Tixoras</div>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="hero-title-line">Plateforme complète de</span>
+                <span class="hero-title-accent">gestion des tickets</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Centralisez, suivez et optimisez votre support en temps réel.<br>
+                Simple à déployer. Puissant à utiliser.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#pricing" class="hero-cta-primary">
+                    <span>Voir les plans</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Showcase vidéo -->
+        <div class="hero-showcase">
+            <div class="hero-showcase-glow"></div>
+            <div class="hero-video-frame">
+                <!-- Barre titre type navigateur -->
+                <div class="vf-titlebar">
+                    <div class="vf-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="vf-url">app.tixoras.com</div>
+                </div>
+
+                <!-- Vidéo -->
+                <div class="vf-screen">
+                    <video id="heroVideo" autoplay muted loop playsinline>
+                        <source src="assets/videos/tixoras-web.mp4" type="video/mp4">
+                    </video>
+
+                    <!-- Contrôles flottants -->
+                    <div class="vf-controls">
+                        <button class="vf-btn" id="heroPlayBtn" aria-label="Lecture / Pause">
+                            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <button class="vf-btn" id="heroMuteBtn" aria-label="Son">
+                            <!-- Son activé -->
+                            <svg class="icon-sound-on" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                            <!-- Son coupé -->
+                            <svg class="icon-sound-off" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="hero-scroll" id="heroScroll">
+            <div class="hero-scroll-line"></div>
+            <span>Découvrir</span>
+        </div>
+    </section>
+
+    <div class="container" id="plans">
         <header class="header">
             <div class="logo-container">
                 <div class="logo-wrapper">
@@ -488,7 +569,7 @@
         </div>
 
         <!-- PLANS D'ABONNEMENT -->
-        <h2 class="pricing-section-title">Choisissez votre plan par nombre d'utilisateurs</h2>
+        <h2 class="pricing-section-title" id="pricing">Choisissez votre plan par nombre d'utilisateurs</h2>
         
         <div class="pricing-cards">
             <!-- PLAN STARTER -->
@@ -665,7 +746,7 @@
             <p>Toutes les fonctionnalités incluent un support technique complet</p>
             <div class="contact-info">
                 <span>Besoin d'aide ? </span>
-                <a href="mailto:support@tixoras.com">support@tixoras.com</a>
+                <a href="mailto:aymane.coding@gmail.com">aymane.coding@gmail.com</a>
             </div>
         </footer>
     </div>
