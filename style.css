@@ -2545,6 +2545,13 @@ a:focus-visible,
     flex-direction: column;
     align-items: flex-end;
     gap: 14px;
+    pointer-events: none; /* wrapper is transparent — don't swallow taps */
+}
+
+/* Re-enable clicks on the two interactive children */
+.demo-fab,
+.demo-popup--open {
+    pointer-events: auto;
 }
 
 /* ── FAB ── */
