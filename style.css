@@ -109,6 +109,7 @@
     letter-spacing: -0.025em;
     background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1;
@@ -137,6 +138,7 @@
     line-height: 1.1;
     background: linear-gradient(135deg, #fff 15%, #a5b4fc 55%, #818cf8 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     filter: drop-shadow(0 0 24px rgba(165,180,252,0.35));
@@ -294,6 +296,14 @@
 .vf-controls:focus-within {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Always show controls on touch devices (no hover available) */
+@media (hover: none) {
+    .vf-controls {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .vf-btn {
@@ -492,6 +502,7 @@ body::before {
     padding: 2px;
     background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
@@ -537,6 +548,7 @@ body::before {
     line-height: 1;
     background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
@@ -590,6 +602,7 @@ body::before {
     font-weight: 800;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 15px;
@@ -1155,6 +1168,7 @@ body::before {
     font-weight: 800;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 20px;
@@ -1307,6 +1321,7 @@ body::before {
     font-weight: 800;
     background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.8));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
     margin-bottom: 5px;

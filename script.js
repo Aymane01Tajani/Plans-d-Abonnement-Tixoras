@@ -228,45 +228,28 @@ function setupCardInteractions() {
 // Animations sophistiquées pour les boutons CTA
 function setupButtonAnimations() {
     const buttons = document.querySelectorAll('.cta-button');
-    
+
     buttons.forEach(button => {
-        // Effet de pulse au hover
         button.addEventListener('mouseenter', () => {
             button.style.animation = 'pulse 1s infinite';
         });
-        
         button.addEventListener('mouseleave', () => {
             button.style.animation = 'none';
         });
-        
-        // Effet de loading au clic
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirection...';
-            this.style.pointerEvents = 'none';
-            
-            setTimeout(() => {
-                this.innerHTML = originalText;
-                this.style.pointerEvents = 'auto';
-                
-                // Simulation d'action selon le plan
-                const card = this.closest('.card');
-                const plan = card.dataset.plan;
-                
-                switch(plan) {
-                    case 'starter':
-                        showNotification('Redirection vers le plan Starter...', 'success');
-                        break;
-                    case 'business':
-                        showNotification('Redirection vers le plan Business...', 'success');
-                        break;
-                    case 'enterprise':
-                        showNotification('Ouverture du formulaire de contact...', 'info');
-                        break;
-                }
-            }, 2000);
+
+        button.addEventListener('click', function() {
+            // Open the demo widget popup
+            const popup  = document.getElementById('demoPopup');
+            const fab    = document.getElementById('demoFab');
+            if (!popup || !fab) return;
+            popup.classList.add('demo-popup--open');
+            const iconChat  = fab.querySelector('.demo-fab-icon--chat');
+            const iconClose = fab.querySelector('.demo-fab-icon--close');
+            if (iconChat)  iconChat.style.display  = 'none';
+            if (iconClose) iconClose.style.display = 'inline-flex';
+            const notif = document.getElementById('demoNotif');
+            if (notif) notif.style.display = 'none';
+            popup.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
     });
 }
